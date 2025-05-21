@@ -28,7 +28,7 @@ export const tmp = '';
 
 // === AUTH === //
 // apis/auth.ts
-export const SignUpRequest = async (dto: SignUpRequestDto): Promise<ResponseDto<SignUpResponseDto>> => {
+export const signUpRequest = async (dto: SignUpRequestDto): Promise<ResponseDto<SignUpResponseDto>> => {
   try {
     const response = await axiosInstance.post(SIGN_UP_URL, dto);
     return responseSuccessHandler(response);
@@ -38,7 +38,7 @@ export const SignUpRequest = async (dto: SignUpRequestDto): Promise<ResponseDto<
 
 }
 
-export const SignInRequest = async (dto: SignInRequestDto): Promise<ResponseDto<SignInResponseDto>> => {
+export const signInRequest = async (dto: SignInRequestDto): Promise<ResponseDto<SignInResponseDto>> => {
   try {
     const response = await axiosInstance.post(SIGN_IN_URL, dto);
     return responseSuccessHandler(response);

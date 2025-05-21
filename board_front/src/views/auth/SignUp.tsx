@@ -1,66 +1,12 @@
 // 함수형 컴포넌트 파일 이름은 대문자로 시작 -> rfce 로 함수형 컴포넌트 생성
 /** @jsxImportSource @emotion/react */
 
-import { SignUpRequest } from '@/apis';
+import { signUpRequest } from '@/apis';
 import { SignUpRequestDto } from '@/dtos/request/auth/sign-up.request.dto';
-import { css } from '@emotion/css';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import * as authStyle from '@/views/auth/auth.style';
 
-//* === Style === //
-const containerStyle = css`
-  max-width: 400px;
-  margin: 60px auto;
-  padding: 40px;
-  border: 1px solid #e0e0e0;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  background-color: #ffffff;
-`;
-
-const titleStyle = css`
-  text-align: center;
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 30px;
-`;
-
-const inputStyle = css`
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 16px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-sizing: border-box;
-  transition: border 0.3s;
-  &:focus {
-    outline: none;
-    border-color: #4caf50;
-  }
-`;
-
-const buttonStyle = css`
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  color: white;
-  background-color: #4caf50;
-  transition: background-color 0.3s;
-  &:hover {
-    background-color: #43a047;
-  }
-`;
-
-const errorMessageStyle = css`
-  color: red;
-  text-align: center;
-  margin-top: 10px;
-  font-size: 14px;
-`
 
 function SignUp() { // 함수형 컴포넌트
 
@@ -102,7 +48,7 @@ function SignUp() { // 함수형 컴포넌트
       confirmPassword
     }
 
-    const response = await SignUpRequest(requestBody);
+    const response = await signUpRequest(requestBody);
     const { result, message } = response;
 
     if (!result) {
@@ -115,7 +61,7 @@ function SignUp() { // 함수형 컴포넌트
   }
 
   return (
-    <div css={containerStyle}>
+    <div css={authStyle.containerStyle}>
       <h2>회원가입</h2>
       <input 
         type="email" 
@@ -123,10 +69,7 @@ function SignUp() { // 함수형 컴포넌트
         name='email'
         value={form.email}
         onChange={onInputChange}
-        style={{
-          width: "100%",
-          marginBottom: 10
-        }}
+        css={authStyle.inputStyle}
       />
       <input 
         type="password" 
@@ -134,10 +77,7 @@ function SignUp() { // 함수형 컴포넌트
         name='password'
         value={form.password}
         onChange={onInputChange}
-        style={{
-          width: "100%",
-          marginBottom: 10
-        }}
+        css={authStyle.inputStyle}
 
       />
       <input 
@@ -146,19 +86,13 @@ function SignUp() { // 함수형 컴포넌트
         name='confirmPassword'
         value={form.confirmPassword}
         onChange={onInputChange}
-        style={{
-          width: "100%",
-          marginBottom: 10
-        }}
+        css={authStyle.inputStyle}
 
       />
-      <button onClick={onSignUpClick} style={{width: "100%", padding: 10}}>
+      <button onClick={onSignUpClick} css={authStyle.buttonStyle}>
         회원가입
       </button>
-      {message && <p style={{
-        color: 'red',
-
-      }}>{message}</p>}
+      {message && <p css={authStyle.errorMessageStyle}>{message}</p>}
     </div>
   )
 }
