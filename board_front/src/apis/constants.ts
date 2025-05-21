@@ -3,7 +3,7 @@
 
 // & variable: URL 상수 //
 // const API_DOMAIN = 'http://localhost:8080'; // 마지막에 '/' x
-const API_DOMAIN = process.env.REACT_APP_API_DOMAIN || "http://localhost:8080"; 
+const API_DOMAIN = import.meta.env.REACT_APP_API_DOMAIN || "http://localhost:8080"; 
 
 // ! 1. 인증 관련 요청 베이스 URL
 const AUTH_MODULE_URL = `${API_DOMAIN}/api/v1/auth`;
