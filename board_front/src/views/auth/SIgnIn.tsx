@@ -64,7 +64,7 @@ function SignIn() {
       sameSite: 'strict',
     });
 
-    // setLogin();
+    setLogin();
 
     alert('로그인 성공');
     navigate('/');
