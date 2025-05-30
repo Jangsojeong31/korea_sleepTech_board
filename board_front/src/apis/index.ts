@@ -19,4 +19,11 @@ export const tmp = '';
 // & 2. Axios 인스턴스 및 공통 설정: axiosConfig.ts
 // & 3. 각 기능별 파일에서 요청 / 응답 구조를 정의
 
+// # index.ts를 모듈 통합 파일로 이용
+// : 다른 모듈에서 API를 간편하게 한 번에 import하도록 돕는 용도
+// > 무조건! api 사용 시!
+// > import {원하는 API명, ... 나열} from '@/apis';
+export * from './auth/auth'
+export * from './board/board'
+export * from './upload/upload'
 

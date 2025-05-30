@@ -1,4 +1,4 @@
-import { uploadPost } from '@/apis/uploadApi';
+import { uploadPost } from '@/apis/upload/upload';
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 
 // PostForm
